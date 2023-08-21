@@ -42,6 +42,10 @@ body {
   left: 50%;
   transform: translateY(-50%);
 }
+
+img {
+  transform: scale(0.9);
+}
 .app--container {
   width: 60%;
   display: flex;
@@ -104,6 +108,14 @@ label {
   color: var(--light-grayish-violet);
   font-size: 1.6rem;
 }
+.cardholder:focus,
+.card--number:focus,
+.year:focus,
+.month:focus,
+.security:focus {
+  outline: none;
+  border-color: hsl(278, 94%, 30%);
+}
 .btn--submit {
   padding: 1.4rem;
   border-radius: 8px;
@@ -113,4 +125,15 @@ label {
   cursor: pointer;
   font-size: 1.6rem;
   /* transition: background-color 200ms; */
+}
+
+.error--msg {
+  visibility: hidden;
+  color: var(--red);
+}
+.display--error {
+  visibility: visible;
+}
+.error--border {
+  border-color: var(--red);
 }
