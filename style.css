@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap');
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+:root {
+  /* --Linear gradient (active input border): hsl(249, 99%, 64%) to hsl(278, 94%, 30%); */
+  --red: hsl(0, 100%, 66%);
+  --white: hsl(0, 0%, 100%);
+  --light-grayish-violet: hsl(270, 3%, 87%);
+  --dark-grayish-violet: hsl(279, 6%, 55%);
+  --very-dark-violet: hsl(278, 68%, 11%);
+}
+
+html {
+  font-size: 62.5%;
+}
+body {
+  display: flex;
+  height: 100vh;
+  max-width: 100vw;
+}
+.background {
+  width: 40%;
+  background-image: url(images/bg-main-desktop.png);
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.card--front {
+  position: absolute;
+  top: 33%;
+  left: 30%;
+  transform: translateY(-50%);
+}
+.card--back {
+  position: absolute;
+  top: 66%;
+  left: 50%;
+  transform: translateY(-50%);
+}
+.app--container {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form {
+  max-width: 34rem;
+}
+.form--control {
+  margin-bottom: 3rem;
+}
+.form--control-inline {
+  display: flex;
+  gap: 2rem;
+}
+.date {
+  width: 50%;
+}
+.cvc {
+  width: 50%;
+}
+label {
+  display: block;
+  text-transform: uppercase;
+  color: var(--very-dark-violet);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  margin-bottom: 0.6rem;
+}
+.cardholder,
+.card--number {
+  width: 100%;
+}
+.month,
+.year {
+  width: 49%;
+}
+.security {
+  width: 100%;
+}
+.btn--submit {
+  width: 100%;
+}
+.cardholder,
+.card--number,
+.year,
+.month,
+.security {
+  padding: 1.2rem;
+  border-radius: 8px;
+  border: 1px solid var(--light-grayish-violet);
+}
+.cardholder::placeholder,
+.card--number::placeholder,
+.year::placeholder,
+.month::placeholder,
+.security::placeholder {
+  color: var(--light-grayish-violet);
+  font-size: 1.6rem;
+}
+.btn--submit {
+  padding: 1.4rem;
+  border-radius: 8px;
+  background-color: var(--very-dark-violet);
+  color: var(--white);
+  border: none;
+  cursor: pointer;
+  font-size: 1.6rem;
+  /* transition: background-color 200ms; */
+}
