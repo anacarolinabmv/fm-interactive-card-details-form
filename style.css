@@ -23,13 +23,13 @@ body {
   grid-template-columns: 3fr 7fr;
   min-height: 100vh;
   width: 100vw;
+  position: relative;
 }
 main {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
 }
 
 .background {
@@ -37,37 +37,36 @@ main {
   height: 100%;
   background-image: url(images/bg-main-desktop.png);
   background-repeat: no-repeat;
-  position: relative;
 }
 
 .card--front {
   position: absolute;
   top: 33%;
-  left: 30%;
+  right: 60%;
   transform: translateY(-50%);
 }
 .card--back {
   position: absolute;
-  top: 66%;
-  left: 50%;
+  top: 63%;
+  right: 55%;
   transform: translateY(-50%);
 }
 
 img {
-  width: 100%;
-  height: 100%;
+  transform: scale(0.8);
 }
 .app--container {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: 8rem;
 }
 .form,
 .success--container {
   max-width: 40rem;
 }
 .form--control {
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
 }
 .form--control-inline {
   display: flex;
@@ -155,6 +154,10 @@ label {
 }
 
 .attribution {
+  position: absolute;
+  bottom: 4rem;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 1.4rem;
   text-align: center;
 }
@@ -162,7 +165,6 @@ label {
   color: var(--very-dark-violet);
 }
 .error--msg {
-  margin-top: 1rem;
   visibility: hidden;
   color: var(--red);
   font-size: 1.2rem;
