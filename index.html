@@ -28,54 +28,71 @@
         <img src="images/bg-card-back.png" alt="" />
       </div>
     </div>
-    <div class="app--container">
-      <div class="form">
-        <form>
-          <div class="form--control">
-            <label for="cardholder">Cardholder name</label>
-            <input
-              type="text"
-              id="cardholder"
-              class="cardholder"
-              placeholder="e.g. Jane Appleseed"
-              autocomplete="off" />
-            <small class="blank error--msg"> Name cannot be empty</small>
-          </div>
-          <div class="form--control">
-            <label for="card--number">Card number</label>
-            <input
-              type="tel"
-              maxlength="19"
-              id="card--number"
-              class="card--number"
-              placeholder="e.g. 1234 5678 9123 0000"
-              required />
-            <small class="wrong--format error--msg">Wrong format. Numbers only</small>
-          </div>
-          <div class="form--control form--control-inline">
-            <div class="date">
-              <label for="month">Exp. date (mm/yy)</label>
-              <input type="number" id="month" class="month" min="1" max="12" placeholder="MM" />
-              <input type="number" id="year" class="year" min="2023" max="2030" placeholder="YY" />
-              <small class="blank error--msg">Can't be blank</small>
+    <main>
+      <div class="app--container">
+        <div class="form">
+          <form>
+            <div class="form--control">
+              <label for="cardholder">Cardholder name</label>
+              <input
+                type="text"
+                id="cardholder"
+                class="cardholder"
+                placeholder="e.g. Jane Appleseed"
+                autocomplete="off" />
+              <small class="blank error--msg"></small>
             </div>
-            <div class="cvc">
-              <label for="security">Cvc</label>
-              <input type="password" id="security" class="security" placeholder="e.g. 123" maxlength="3" />
-              <small class="blank error--msg">Can't be blank</small>
+            <div class="form--control">
+              <label for="card--number">Card number</label>
+              <input
+                type="tel"
+                maxlength="19"
+                id="card--number"
+                class="card--number"
+                placeholder="e.g. 1234 5678 9123 0000"
+                required />
+              <small class="wrong--format error--msg">Wrong format. Numbers only</small>
             </div>
-          </div>
-          <button type="submit" class="btn--submit" id="submit">Confirm</button>
-          <!-- 0000 0000 0000 0000 Jane Appleseed 00/00 000  e.g. 1234 5678
-          9123 0000 Exp. Date (MM/YY) MM YY CVC e.g. 123 Confirm -->
-        </form>
-      </div>
+            <div class="form--control form--control-inline">
+              <div class="date">
+                <label for="month">Exp. date (mm/yy)</label>
+                <input type="number" id="month" class="month" min="1" max="12" placeholder="MM" />
+                <input type="number" id="year" class="year" placeholder="YY" />
+                <small class="blank error--msg">Can't be blank</small>
+              </div>
+              <div class="cvc">
+                <label for="security">Cvc</label>
+                <input type="password" id="security" class="security" placeholder="e.g. 123" maxlength="3" />
+                <small class="blank error--msg">Can't be blank</small>
+              </div>
+            </div>
+            <button type="submit" class="btn btn--submit" id="submit">Confirm</button>
+          </form>
+        </div>
 
-      <!-- <div class="attribution">
+        <!-- <div class="attribution">
         Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. Coded by
         <a href="#">Your Name Here</a>.
       </div> -->
-    </div>
+      </div>
+      <div class="success--container">
+        <div class="success--icon">
+          <svg width="80" height="80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="40" cy="40" r="40" fill="url(#a)" />
+            <path d="M28 39.92 36.08 48l16-16" stroke="#fff" stroke-width="3" />
+            <defs>
+              <linearGradient id="a" x1="-23.014" y1="11.507" x2="0" y2="91.507" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#6348FE" />
+                <stop offset="1" stop-color="#610595" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <h1 class="heading--success">Thank you!</h1>
+        <p class="paragraph--success">We've added your card details</p>
+        <button class="btn" id="continue">Continue</button>
+      </div>
+    </main>
 
     <script src="script.js"></script>
   </body>
