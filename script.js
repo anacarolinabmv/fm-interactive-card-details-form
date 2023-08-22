@@ -10,10 +10,7 @@ const btnContinue = document.getElementById('continue');
 const appContainer = document.querySelector('.app--container');
 const successContainer = document.querySelector('.success--container');
 
-let allValid;
-
 const init = function () {
-  allValid = false;
   appContainer.style.display = 'flex';
   successContainer.style.display = 'none';
   inputCardholder.value =
@@ -32,11 +29,8 @@ const init = function () {
 init();
 
 const validateForm = function () {
-  validateName();
-  validateCardNumber();
-  validateDate();
-  validateCVC();
-  if (allValid) renderSuccess();
+  const passed = validateName() && validateCardNumber() && validateDate() && validateCVC();
+  if (passed) renderSuccess();
 };
 
 const restoreError = function (element) {
@@ -63,7 +57,7 @@ const validateName = function () {
     renderError(inputCardholder, 'Field cannot be empty');
     return;
   }
-  allValid = true;
+  return true;
 };
 
 const validateCardNumber = function () {
@@ -79,7 +73,7 @@ const validateCardNumber = function () {
     renderError(inputCardNumber, 'Wrong format. Numbers only');
     return;
   }
-  allValid = true;
+  return true;
 };
 
 const validateDate = function () {
@@ -88,36 +82,52 @@ const validateDate = function () {
     renderError(inputYear, 'Field cannot be empty');
     return;
   }
-  allValid = true;
+  return true;
 };
 const validateCVC = function () {
   if (!inputCVC.value) {
     renderError(inputCVC, 'Field cannot be empty');
     return;
   }
-  allValid = true;
+  return true;
 };
 
 btnConfirm.addEventListener('click', (event) => {
   event.preventDefault();
+  validateName();
+  validateCardNumber();
+  validateDate();
+  validateCVC();
   validateForm();
 });
 
 btnContinue.addEventListener('click', init);
-inputCardholder.addEventListener('focus', function () {
-  restoreError(this);
-});
-inputCardNumber.addEventListener('focus', function () {
-  restoreError(this);
-});
-inputMonth.addEventListener('focus', function () {
-  restoreError(inputMonth);
-  restoreError(inputYear);
-});
-inputYear.addEventListener('focus', function () {
-  restoreError(inputMonth);
-  restoreError(inputYear);
-});
-inputCVC.addEventListener('focus', function () {
-  restoreError(this);
-});
+
+const restoreInputError = (input) => {
+  const restoreInputErrorSibling = (sibling) => {
+    input.addEventListener('focus', () => {
+      sibling.classList.remove('error--border');
+    });
+  };
+
+  if (input === inputMonth) {
+    const sibling = input.nextElementSibling;
+    restoreInputErrorSibling(sibling);
+  }
+  if (input === inputYear) {
+    const sibling = input.previousElementSibling;
+    restoreInputErrorSibling(sibling);
+  }
+
+  input.addEventListener('focus', function () {
+    const errorLabel = input.parentElement.querySelector('small');
+    errorLabel.classList.remove('display--error');
+    input.classList.remove('error--border');
+  });
+};
+
+restoreInputError(inputCardholder);
+restoreInputError(inputCardNumber);
+restoreInputError(inputMonth);
+restoreInputError(inputYear);
+restoreInputError(inputCVC);

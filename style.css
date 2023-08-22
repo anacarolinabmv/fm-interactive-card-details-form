@@ -19,18 +19,22 @@ html {
   font-size: 62.5%;
 }
 body {
-  display: flex;
-  height: 100vh;
-  max-width: 100vw;
+  display: grid;
+  grid-template-columns: 3fr 7fr;
+  min-height: 100vh;
+  width: 100vw;
 }
 main {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  gap: 2rem;
 }
+
 .background {
-  width: 40%;
+  width: 100%;
+  height: 100%;
   background-image: url(images/bg-main-desktop.png);
   background-repeat: no-repeat;
   position: relative;
@@ -50,16 +54,17 @@ main {
 }
 
 img {
-  transform: scale(0.9);
   width: 100%;
+  height: 100%;
 }
 .app--container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.form {
-  max-width: 34rem;
+.form,
+.success--container {
+  max-width: 40rem;
 }
 .form--control {
   margin-bottom: 3rem;
@@ -84,19 +89,15 @@ label {
   margin-bottom: 0.6rem;
 }
 .cardholder,
-.card--number {
+.card--number,
+.security {
   width: 100%;
 }
 .month,
 .year {
   width: 49%;
 }
-.security {
-  width: 100%;
-}
-.btn--submit {
-  width: 100%;
-}
+
 .cardholder,
 .card--number,
 .year,
@@ -105,6 +106,7 @@ label {
   padding: 1.2rem;
   border-radius: 8px;
   border: 1px solid var(--light-grayish-violet);
+  margin-bottom: 0.6rem;
 }
 .cardholder::placeholder,
 .card--number::placeholder,
@@ -138,7 +140,6 @@ label {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 34rem;
 }
 
 .heading--success {
@@ -153,9 +154,18 @@ label {
   margin-bottom: 3rem;
 }
 
+.attribution {
+  font-size: 1.4rem;
+  text-align: center;
+}
+.attribution a {
+  color: var(--very-dark-violet);
+}
 .error--msg {
+  margin-top: 1rem;
   visibility: hidden;
   color: var(--red);
+  font-size: 1.2rem;
 }
 .display--error {
   visibility: visible;
