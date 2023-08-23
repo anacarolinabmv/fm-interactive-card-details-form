@@ -32,7 +32,7 @@ Users should be able to:
 
 ### Links
 
-- Live Site URL: [Netlify - Interactive Card Form](https://fm-interactive-card-form.netlify.app/)
+- Live Site URL: [Netlify - Interactive Card Form](https://fm-int-form.netlify.app/)
 
 ## My process
 
