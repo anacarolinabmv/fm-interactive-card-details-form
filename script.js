@@ -9,6 +9,7 @@ const btnConfirm = document.getElementById('submit');
 const btnContinue = document.getElementById('continue');
 const appContainer = document.querySelector('.app--container');
 const successContainer = document.querySelector('.success--container');
+let currentYear;
 
 const init = function () {
   appContainer.style.display = 'flex';
@@ -21,17 +22,13 @@ const init = function () {
     inputCVC.value =
       '';
 
-  const currentYear = new Date().getFullYear();
-  inputYear.setAttribute('min', currentYear);
-  inputYear.setAttribute('max', currentYear + 10);
+  currentYear = new Date().getFullYear();
+
+  inputYear.setAttribute('min', `${currentYear}`.slice(-2));
+  inputYear.setAttribute('max', `${currentYear + 10}`.slice(-2));
 };
 
 init();
-
-const validateForm = function () {
-  const passed = validateName() && validateCardNumber() && validateDate() && validateCVC();
-  if (passed) renderSuccess();
-};
 
 const restoreError = function (element) {
   const errorLabel = element.parentElement.querySelector('small');
@@ -44,11 +41,6 @@ const renderError = function (element, msg) {
   errorLabel.classList.add('display--error');
   element.classList.add('error--border');
   errorLabel.textContent = msg;
-};
-
-const renderSuccess = function () {
-  appContainer.style.display = 'none';
-  successContainer.style.display = 'flex';
 };
 
 const validateName = function () {
@@ -77,20 +69,57 @@ const validateCardNumber = function () {
 };
 
 const validateDate = function () {
-  if (!inputMonth.value || !inputYear.value) {
+  const month = inputMonth.value;
+  const year = inputYear.value;
+
+  if (!month || !year) {
     renderError(inputMonth, 'Field cannot be empty');
     renderError(inputYear, 'Field cannot be empty');
     return;
+  } else if (month.length < 2 || year.length < 2) {
+    if (month.length < 2) {
+      renderError(inputMonth, 'Must be two characters long');
+    } else {
+      renderError(inputYear, 'Must be two characters long');
+    }
+    return;
+  } else if (
+    (month < 1 || month > 12) &&
+    (year < `${currentYear}`.slice(-2) || year > +`${currentYear}`.slice(-2) + 10)
+  ) {
+    renderError(inputMonth, 'Must be a valid date');
+    renderError(inputYear, 'Must be a valid date');
+    return;
+  } else if (month < 1 || month > 12) {
+    renderError(inputMonth, 'Must be a valid month');
+  } else if (year < `${currentYear}`.slice(-2) || year > +`${currentYear}`.slice(-2) + 10) {
+    renderError(inputYear, 'Must be a valid year');
   }
+
   return true;
 };
 const validateCVC = function () {
-  if (!inputCVC.value) {
+  const cvc = inputCVC.value;
+  if (!cvc) {
     renderError(inputCVC, 'Field cannot be empty');
     return;
   }
-  return true;
+  const regex = /^[0-9]*$/;
+  const test = regex.test(cvc);
+  if (test) return true;
 };
+
+const renderSuccess = function () {
+  appContainer.style.display = 'none';
+  successContainer.style.display = 'flex';
+};
+
+const validateForm = function () {
+  const passed = validateName() && validateCardNumber() && validateDate() && validateCVC();
+  if (passed) renderSuccess();
+};
+
+//Event handlers
 
 btnConfirm.addEventListener('click', (event) => {
   event.preventDefault();
