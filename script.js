@@ -12,8 +12,8 @@ const successContainer = document.querySelector('.success--container');
 let currentYear;
 
 const init = function () {
-  appContainer.style.display = 'flex';
-  successContainer.style.display = 'none';
+  appContainer.classList.remove('hidden');
+  successContainer.classList.add('hidden');
   inputCardholder.value =
     inputCardholder.value =
     inputCardNumber.value =
@@ -110,8 +110,8 @@ const validateCVC = function () {
 };
 
 const renderSuccess = function () {
-  appContainer.style.display = 'none';
-  successContainer.style.display = 'flex';
+  successContainer.classList.remove('hidden');
+  appContainer.classList.add('hidden');
 };
 
 const validateForm = function () {

@@ -37,13 +37,8 @@ aside {
   height: 100vh;
   grid-template-columns: 5fr 6fr;
   column-gap: 5rem;
-}
-
-main {
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-items: center;
 }
 
 .cards {
@@ -122,16 +117,11 @@ img {
 }
 .form--container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
   max-width: 45rem;
-  width: 100%;
   padding: 3rem;
 }
 
-.success--container {
-  max-width: 40rem;
-}
 .form--control {
   margin-bottom: 1rem;
 }
@@ -139,12 +129,11 @@ img {
   display: flex;
   gap: 2rem;
 }
-.date {
-  width: 50%;
-}
+.date,
 .cvc {
   width: 50%;
 }
+
 label {
   display: block;
   text-transform: uppercase;
@@ -203,10 +192,16 @@ label {
   /* transition: background-color 200ms; */
 }
 .success--container {
-  display: none;
+  display: flex;
+  width: 100%;
+  max-width: 40rem;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  justify-content: center;
+  padding: 3rem;
+}
+.hidden {
+  display: none;
 }
 
 .heading--success {
@@ -216,7 +211,7 @@ label {
   margin: 2rem 0;
 }
 .paragraph--success {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   color: var(--light-grayish-violet);
   margin-bottom: 3rem;
 }
@@ -306,21 +301,20 @@ label {
     height: 30%;
     width: 100%;
   }
-  main {
-    margin-top: -6rem;
-  }
+
   label {
     font-size: 1.6rem;
+    margin-bottom: 1rem;
   }
 
   .container {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 2fr;
-    /* row-gap: 15rem; */
-    padding: 3rem;
+    grid-template-rows: 3fr 7fr;
+    align-items: center;
   }
   .form--container {
-    padding: 0;
+    padding: 0 2rem 2rem;
+    justify-content: center;
   }
   .cards {
     flex-direction: column-reverse;
@@ -337,6 +331,37 @@ label {
     font-size: 2rem;
   }
   .form--container {
-    justify-content: space-around;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 420px) {
+  .number--card {
+    letter-spacing: 1px;
+    font-size: 1.6rem;
+  }
+  .form--container {
+    padding: 0;
+  }
+  .date {
+    width: 60%;
+  }
+  .cvc {
+    width: 40%;
+  }
+}
+@media (max-width: 345px) {
+  main {
+    margin-top: -2rem;
+  }
+  .form--control-inline {
+    flex-direction: column;
+    gap: 0;
+  }
+  .date {
+    width: 100%;
+  }
+  .cvc {
+    width: 100%;
   }
 }
