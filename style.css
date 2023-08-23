@@ -52,6 +52,7 @@ aside {
 .card--front,
 .card--back {
   width: 85%;
+  height: 100%;
   position: relative;
 }
 
