@@ -7,7 +7,7 @@ const inputYear = document.getElementById('year');
 const inputCVC = document.getElementById('security');
 const btnConfirm = document.getElementById('submit');
 const btnContinue = document.getElementById('continue');
-const appContainer = document.querySelector('.app--container');
+const appContainer = document.querySelector('.form--container');
 const successContainer = document.querySelector('.success--container');
 let currentYear;
 
